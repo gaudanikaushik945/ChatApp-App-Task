@@ -100,47 +100,6 @@ exports.userLogin = async(req, res) => {
 
 
 
-// exports.getAllUser = async(req, res) => {
-//     try {
-//         const userToken = tokenChek
-//         console.log("===== usertoken =======", userToken)
-
-
-//         if (!userToken || !userToken.userId) {
-//             return res.status(400).json({
-//                 data: false,
-//                 message: "User token is invalid or missing.",
-//             });
-//         }
-
-
-//         const findUser = await User.find();
-//         console.log("+++++++++++ findUser ++++++++++++++++", findUser);
-
-//         if (!findUser || findUser.length === 0) {
-//             return res.status(404).json({
-//                 data: false,
-//                 message: "User not found.",
-//             });
-//         }
-
-//         return res.status(200).json({
-//             data: true,
-//             user: findUser,
-//             message: "User data retrieved successfully, except the logged-in user." 
-//         });
-
-        
-//     } catch (error) {
-//         console.log("==== error =====", error);
-//         return res.status(500).json({
-//             data: false,
-//             message: "An unexpected error occurred while get the user. Please try again later."
-//         })
-//     }
-// }
-
-
 
 
 
@@ -148,15 +107,6 @@ exports.getAllUser = async (req, res) => {
     try {
         const userToken = tokenChek; 
         console.log("===== userToken =======", userToken);
-
-        
-        // if (!userToken || !userToken.userId) {
-        //     return res.status(400).json({
-        //         data: false,
-        //         message: "User token is invalid or missing.",
-        //     });
-        // }
-
        
         const findUser = await User.find({ _id: { $ne: userToken.userId } });
         console.log("+++++++++++ findUser ++++++++++++++++", findUser);
