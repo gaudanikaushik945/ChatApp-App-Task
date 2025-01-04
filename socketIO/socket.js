@@ -20,7 +20,7 @@ function initSocketIo(server) {
       }
 
       const decoded = jwt.verify(token, process.env.JWT_SECRET);
-      socket.userId = decoded.userId; // Attach the user ID to the socket
+      socket.userId = decoded.userId; 
       next();
     } catch (error) {
       console.error("Authentication error:", error);
